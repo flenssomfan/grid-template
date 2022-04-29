@@ -1,0 +1,94 @@
+@use "../../presets" as *;
+@use "../../mixins" as *;
+
+.posts {
+ @extend %paddingtb;
+ 
+ &__container {
+  @extend %container;
+ }
+
+ &__content {
+   display: grid;
+   gap:$gap;
+   padding-bottom: $gap;
+
+   @include lg-min {
+    grid-template-areas: "p1 p1 p2 p3" "p4 p5 p6 p6";
+    grid-template-columns: repeat(4, 1fr);
+   }
+
+   @include lg-md {
+     grid-template-areas: "p1 p1 p2" "p3 p4 p4" "p5 p5 p6";
+     grid-template-columns: repeat(3, 1fr);
+   }
+   @include md-sm {
+    grid-template-areas: "p1 p2" "p3 p4" "p5 p6";
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include sm {
+    grid-template-areas: "p1" "p2" "p3" "p4" "p5" "p6";
+  }
+ }
+
+
+ &-image {
+   width: 100%;
+   object-fit: cover;
+ }
+
+ &-item {
+   transition: background-color 0.5s;
+   background-color: #f2f2f2;
+
+   @for $i from 1 through 6 {
+    &:nth-of-type(#{$i}) {
+      grid-area: p#{$i};
+    }
+   }
+
+   &__link {
+     display: grid;
+     height: 100%;
+     grid-template-rows: 300px 1fr;
+     overflow: hidden;
+   }
+
+   &__img {
+     display: flex;
+     align-content: center;
+     justify-content: center;
+     overflow: hidden;
+
+     img {
+       transition: transform 0.5s;
+     }
+   }
+
+   &__caption {
+     color: $color-gray;
+     display: grid;
+     padding: $gap;
+     align-content: center;
+     text-align: center;
+     letter-spacing: 0;
+   }
+   &:hover {
+     background-color: #d8d8d8;
+   }
+   &:hover .posts-item__img img {
+     transform: scale(1.1);
+   }
+   &:hover h3 {
+     color: #2d3651;
+   }
+   &:hover p {
+    color: #2d3651;
+   }
+ }
+
+ &__actions {
+  @extend %actions;
+}
+}

@@ -1,0 +1,58 @@
+@use "../presets/" as *;
+@use "../mixins/" as *;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  overflow-y: scroll;
+
+  letter-spacing: 0.1em;
+
+  font-family: $font-main;
+  font-size: $font-size;
+}
+h1 {
+  text-align: center;
+  letter-spacing: 0.08em;
+
+  color: $color-light;
+
+  font-family: $font-header;
+  font-weight: 300;
+  line-height: 1.2em;
+
+  @include lg-min {
+    font-size: 3.75rem;
+    margin-bottom: 3rem;
+  }
+  @include lg-md {
+    font-size: 1.875rem;
+    margin-bottom: 2.625rem;
+  }
+  @include md {
+    font-size: 1.875;
+    margin-bottom: 2.25rem;
+  }
+  @include sm {
+    text-align: center;
+  }
+}
+a {
+  text-decoration: none;
+
+  color: $color-light;
+}
+h2 {
+  font-family: $font-header;
+  color: $color-primary;
+  letter-spacing: 00.1em;
+
+  line-height: 1.2em;
+  margin-top: 0;
+}
+h3 {
+  font-family: $font-header;
+  font-size: 1.125rem;
+}

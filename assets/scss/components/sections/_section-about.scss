@@ -1,0 +1,80 @@
+@use "../../presets" as *;
+@use "../../mixins" as *;
+
+
+.about {
+  background-color: $color-gray-light;
+  letter-spacing: 0.055em;
+  
+  @extend %paddingtb;
+
+  &__container {
+    display: grid;
+
+
+    @extend %container;
+
+    @include lg-min {
+      gap: 100px;
+      grid-template-columns: 1fr 271px;
+    }
+
+    @include lg-md {
+      gap: $gap;
+      grid-template-columns: 1fr 236px;
+    }
+    
+
+    @include sm {
+      gap: $gap;
+    }
+  }
+  &__content {
+  color: $color-gray;
+  
+  &__content p {
+    @include lg-min {
+      font-size: 1.125 rem;
+    }
+
+    &:first-of-type {
+      position: relative;
+      margin-top: -5px;
+
+      @include sm-min {
+        &::after {
+          position: absolute;
+          top: 0;
+          content: "";
+          height: 200px;
+          width: 2px;
+          border: 1px solid rgba(#707070, 0.15);
+
+          @include lg-min {
+            right: -50px;
+          }
+          @include lg-md {
+            right: -20px;
+          }
+          @include md {
+            right: -10px;
+          }
+        }
+      }
+    }
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+  }
+  &__img {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+
+    img {
+      max-width: 100%;
+      max-height: 480px;
+    }
+  }
+}

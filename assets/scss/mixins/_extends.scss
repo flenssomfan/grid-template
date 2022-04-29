@@ -1,0 +1,28 @@
+@use "../presets" as *;
+@use "mixins" as *;
+@use "mixins-media" as *;
+%container {
+  max-width: $ul;
+  margin: 0 auto;
+  padding-right: $gap;
+  padding-left: $gap;
+}
+%paddingtb {
+  @include lg-min {
+    padding: 100px 0;
+  }
+
+  @include lg-md {
+    padding: 80px 0;
+  }
+
+  @include md {
+    padding: 60px 0;
+  }
+}
+
+%actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

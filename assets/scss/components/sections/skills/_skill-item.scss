@@ -1,0 +1,64 @@
+@use "../../../presets/" as *;
+@use "../../../mixins/" as *;
+.skills-item {
+  position: relative;
+
+  overflow: hidden;
+
+  &:hover {
+    .skills-item__link {
+      color: $color-accent;
+    }
+    .skills-item__image {
+      transform: scale(1.1);
+    }
+    .skills-item__overlay {
+      opacity: 0.95;
+    }
+  }
+  &__title {
+    z-index: 1;
+
+    margin: 0;
+
+    @include abs-position;
+    @include md-min {
+      font-size: 1.25rem;
+    }
+    @include md {
+      font-size: 1.125rem;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    padding: $gap;
+
+    transition: color 0.5s;
+  }
+  &__image {
+    transition: 0.5s transform;
+
+    background-color: $color-primary;
+    background-position: 50% 50% ;
+    background-size: cover;
+
+    @include abs-position;
+  }
+  &__overlay {
+    transition: opacity 0.5s;
+
+    opacity: 0.8;
+    background-color: $color-primary;
+
+    @include abs-position;
+  }
+}
+@for $i from 1 through 9 {
+  .skills-item:nth-of-type(#{$i}) {
+    grid-area: a#{$i};
+  }
+}
